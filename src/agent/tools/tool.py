@@ -1,0 +1,11 @@
+from abc import ABC, abstractmethod
+class Tool(ABC):
+
+    @property
+    @abstractmethod
+    def name(self):
+        pass
+
+    @abstractmethod
+    def execute(self, arguments: dict):
+        pass
