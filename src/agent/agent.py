@@ -1,5 +1,9 @@
+from email import message
+from io import UnsupportedOperation
+from agent import llm
 from agent.executor.tool_executor import ToolExecutor
 from agent.llm.client import LLMClient
+from agent.protocal.message import FinalAnswer, ToolCall
 from agent.protocal.parser import parse_response
 
 
@@ -30,6 +34,25 @@ class Agent:
         self._executor = executor
 
     
-    def run(self, prompt: str):
-        response = self._llm.generate(prompt)
-        parsed = parse_response(response)
+    def run(self, user_input: str) -> str:
+        """
+        Execute a single agent interaction.
+
+        The current implementation performs one LLM call,
+        optionally executes one tool, and returns the result.
+
+        A future version will evolve into the complete
+        Think → Act → Observe loop.
+        """
+        raw_response = self._llm.generate(user_input)
+        message = parse_response(raw_response)
+
+        if(isinstance(message, FinalAnswer)):
+            return message.answer
+        
+        if(isinstance(message, ToolCall)):
+            return self._executor.execute(message)
+
+        raise TypeError(
+            f"Unsupported response type: {type(message).__name__} "
+        )
