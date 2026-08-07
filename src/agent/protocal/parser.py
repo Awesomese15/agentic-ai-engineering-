@@ -12,7 +12,7 @@ def parse_response(response: str):
     response_type = data.get("type")
 
 
-    if response_type == "toil_call":
+    if response_type == "tool_call":
         return ToolCall(
             tool=data.get("tool"),
             arguments=data.get("arguments"),
