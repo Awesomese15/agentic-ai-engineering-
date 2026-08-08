@@ -1,5 +1,5 @@
 import json
-from protocal.message import ToolCall, FinalAnswer
+from protocol.message import ToolCall, FinalAnswer
 
 class InvalidResponse(Exception):
     pass

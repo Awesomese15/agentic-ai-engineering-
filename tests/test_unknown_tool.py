@@ -1,7 +1,7 @@
 import pytest
 from agent.tools.registry import ToolRegistry
 from agent.executor.tool_executor import ToolExecutor
-from agent.protocal.message import ToolCall
+from agent.protocol.message import ToolCall
 
 def test_unknown_tool():
 

@@ -1,12 +1,10 @@
 from dataclasses import dataclass
 from typing import Any
 
-from agent.tools import tool
-
 @dataclass
 class ToolCall:
     tool: str
-    arguments: dict[str, any]
+    arguments: dict[str, Any]
 
 @dataclass
 class FinalAnswer:

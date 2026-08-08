@@ -3,8 +3,8 @@ from io import UnsupportedOperation
 from agent import llm
 from agent.executor.tool_executor import ToolExecutor
 from agent.llm.client import LLMClient
-from agent.protocal.message import FinalAnswer, ToolCall
-from agent.protocal.parser import parse_response
+from agent.protocol.message import FinalAnswer, ToolCall
+from agent.protocol.parser import parse_response
 
 
 class Agent:
