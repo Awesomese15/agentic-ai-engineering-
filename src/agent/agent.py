@@ -26,9 +26,14 @@ class Agent:
         self,
         llm: LLMClient,
         executor: ToolExecutor,
+        max_iterations: int = 5
     ) -> None:
+
+        if (max_iterations <= 0):
+            raise ValueError("Value must me greater than zero")
         self._llm = llm
         self._executor = executor
+        self._max_iterations = max_iterations
 
     
     def run(self, user_input: str) -> str:
