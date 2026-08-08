@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from typing import Any
 
+from agent.tools import tool
+
 @dataclass
 class ToolCall:
     tool: str
@@ -9,3 +11,8 @@ class ToolCall:
 @dataclass
 class FinalAnswer:
     answer: str
+
+@dataclass(frozen=True)
+class Observation:
+    tool: str
+    content: str
