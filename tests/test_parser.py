@@ -1,4 +1,4 @@
-from agent.protocal.parser import parse_response
+from agent.protocol.parser import parse_response
 
 def test_parser_call():
     response = f'''
